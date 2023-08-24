@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Types extends Model
 {
     use HasFactory;
+    protected $fillable = ['category','mobile','tablet','pc','smart_tv','android','ios','windows','mac','linux','age_protection'];
 }
