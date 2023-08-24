@@ -29,9 +29,12 @@ class PortfolioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //FFORM
     public function create()
     {
-        return view('admin.works.create');
+        //Recupero tutti i dati dalla tabella types
+        $types=Types::all();
+        return view('admin.works.create', compact('types'));
     }
 
     /**
@@ -78,8 +81,11 @@ class PortfolioController extends Controller
      */
     public function edit($id)
     {
+        //Recupero tutti i dati dalla tabella types
+        $types=Types::all();
+
         $project = Portfolio::findOrFail($id);
-        return view('admin.works.edit', compact ('project'));
+        return view('admin.works.edit', compact ('project', 'types'));
     }
 
     /**
