@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('portolios', function (Blueprint $table) {
+        Schema::table('portfolios', function (Blueprint $table) {
             //CREO LA NUOVA COLONNA COME unsignedBigInteger --After->Dopo l'id
-            $table->unsignedBinInteger('type_id')->nullable()->after('id');
+            $table->unsignedBigInteger('type_id')->nullable()->after('id');
 
             //CREO IL VINCOLO/FOREIGN KEY su tabella Types
             $table->foreign('types_id')->references('id')->on('types')->onDelete('set null');
@@ -29,8 +29,10 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('portolios', function (Blueprint $table) {
-            //
+        Schema::table('portfolios', function (Blueprint $table) {
+            $table->dropForeign('portfolios_type_id_foreign');
+
+            $table->dropColumn('type_id');
         });
     }
 };
