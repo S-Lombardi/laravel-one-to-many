@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('type_id')->nullable()->after('id');
 
             //CREO IL VINCOLO/FOREIGN KEY su tabella Types
-            $table->foreign('types_id')->references('id')->on('types')->onDelete('set null');
+            $table->foreign('type_id')->references('id')->on('types')->onDelete('set null');
         });
     }
 
