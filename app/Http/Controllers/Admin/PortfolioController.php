@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Types;
 
 use App\Models\Portfolio;
 use App\Http\Requests\StorePortfolioRequest;
@@ -10,6 +11,8 @@ use App\Http\Requests\UpdatePortfolioRequest;
 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class PortfolioController extends Controller
 {
@@ -20,8 +23,9 @@ class PortfolioController extends Controller
      */
     public function index()
     {
+        $types= Types::all();
         $works = Portfolio::all();
-        return view('admin.works.index', compact('works'));
+        return view('admin.works.index', compact('works','types'));
     }
 
     /**
@@ -48,15 +52,15 @@ class PortfolioController extends Controller
         $form_data=$request-> all();
 
         $project= new Portfolio();
-        $project->fill($form_data);
         
         //Controllo per le immagini
         if($request->hasFile('image')){
             $path = Storage::put('image', $request->image);
-
+            
             $form_data['image']=$path;
         }
-
+        
+        $project->fill($form_data);
         $project->save();
         return redirect()->route('admin.works.index');
     }
@@ -81,10 +85,10 @@ class PortfolioController extends Controller
      */
     public function edit($id)
     {
-        //Recupero tutti i dati dalla tabella types
+        //Recupero tutti i dati 
+        $project = Portfolio::findOrFail($id);
         $types=Types::all();
 
-        $project = Portfolio::findOrFail($id);
         return view('admin.works.edit', compact ('project', 'types'));
     }
 
@@ -99,7 +103,7 @@ class PortfolioController extends Controller
     {
         $form_data = $request->all();
         $project = Portfolio::findOrFail($id);
-
+        
         //Controllo per le immagini
         if($request->hasFile('image')){
             $path = Storage::put('image', $request->image);
