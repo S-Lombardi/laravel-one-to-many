@@ -71,6 +71,78 @@
                         <label for="" class="control-label">Nome Illustratore</label>
                         <input type="text"class="form-control" id="illustrator" name="illustrator" value="{{$project->illustrator}}">
                     </div>
+
+                    {{---- TABELLA TYPES SELECT ----}}
+                    <div class="form-group mt-5">
+                        {{-- CATEGORIA --}}
+                        <label for="">Categoria</label>
+                        <select name="type_id" id="type_id" class="form-control">
+                            @foreach($types as $type)
+                                <option value="{{$type->id}}">{{$type->category}}</option>
+                            @endforeach
+                        </select>
+                        {{--FINE CATEGORIA --}}
+
+                        {{-- SUPPORTI --}}
+                        <h5 class="mt-5">
+                            Supporti
+                        </h5>
+                        <div>
+                            <label for="">Mobile</label>
+                            <input name='categories[mobile]' type="checkbox" value="true">
+                        </div>
+                        <div>
+                            <label for="">Tablet</label>
+                            <input name='categories[tablet]' type="checkbox" value="true">
+                        </div>
+                        <div>
+                            <label for="">Pc</label>
+                            <input name='categories[pc]' type="checkbox" value="true">
+                        </div>
+                        <div>
+                            <label for="">Smart TV</label>
+                            <input name='categories[smart_tv]' type="checkbox" value="true">
+                        </div>
+                        {{--FINE SUPPORTI --}}
+
+                        {{-- SISTEMI OPERATIVI --}}
+                        <h5 class="mt-5">
+                            Sistemi operativi
+                        </h5>
+                        <div>
+                            <label for="">Android</label>
+                            <input name='categories[android]' type="checkbox" value="true">
+                        </div>
+                        <div>
+                            <label for="">IOS</label>
+                            <input name='categories[ios]' type="checkbox" value="true">
+                        </div>
+                        <div>
+                            <label for="">Windows</label>
+                            <input name='categories[windows]' type="checkbox" value="true">
+                        </div>
+                        <div>
+                            <label for="">Mac</label>
+                            <input name='categories[mac]' type="checkbox" value="true">
+                        </div>
+                        <div>
+                            <label for="">Linux</label>
+                            <input name='categories[linux]' type="checkbox" value="true">
+                        </div>
+                        {{--FINE SISTEMI OPERATIVI --}}
+
+                        {{--RESTRIZIONE ETà  --}}
+                        <h5 class="mt-5">
+                            Limite di età
+                        </h5>
+                        <div>
+                            <label for="">+18</label>
+                            <input name='categories[linux]' type="checkbox" value="true">
+                        </div>
+                        {{--FINE RESTRIZIONE ETà  --}}
+                    </div>
+                    
+                {{---- FINE TABELLA TYPES SELECT ----}}
     
                     {{-- PULSANTE --}}
                     <div class="form-group">
