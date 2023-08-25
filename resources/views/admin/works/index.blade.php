@@ -23,8 +23,6 @@
                             <img class="img-fluid" src="{{asset('storage/'.$project->image)}}" alt="{{$project->title}}">
                         </div>
                 
-
-                        
                         {{-- TITOLO --}}
                         <div>
                             <h5 class="card-title text-uppercase">{{$project->title}}</h5>
@@ -40,6 +38,13 @@
                             Link: 
                             <em><a href="#">{{$project->link}}</a></em>
                         </div>
+
+                        {{-- CATEGORIA / SELECT --}}
+                        <div>
+                           
+                            
+                        </div>
+
                         {{-- FILE SHOW - Mostra dettagli del progetto --}}
                         <div>
                             <a href="{{route('admin.works.show', $project->id)}}">
