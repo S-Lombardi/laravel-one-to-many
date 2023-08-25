@@ -20,13 +20,14 @@ class TypesSeeder extends Seeder
     {
         $categories = ['E-commerce', 'Magazine', 'Blog', 'Portal'];
 
-        foreach($categories as $cat){
+        foreach($categories as $category){
             $type = new Types();
 
-            $type->category = $cat;
-
+            $type->category = $category;
+            
+            
             DB::table('types')->insert([
-                'category'=> $cat,
+                'category'=> $category,
                 'mobile'=> false,
                 'tablet'=> false,
                 'pc'=> false,
