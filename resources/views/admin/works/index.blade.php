@@ -41,8 +41,8 @@
 
                         {{-- CATEGORIA / SELECT --}}
                         <div>
-                           
-                            
+                            <label class="fw-bold">Categoria:</label>
+                            {{$project->type->category}}
                         </div>
 
                         {{-- FILE SHOW - Mostra dettagli del progetto --}}
